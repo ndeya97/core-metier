@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const extendSchema = require('mongoose-extend-schema');
-const episodeSchema = require('./Episode');
 const Schema = mongoose.Schema;
+// const extendSchema = require('mongoose-extend-schema');
+// const episodeSchema = require('./Episode').schema;
 
 //Media model
 const mediaSchema = new Schema({
@@ -23,6 +23,7 @@ const mediaSchema = new Schema({
     }
 });
 
+/*
 //Film model
 const filmSchema = extendSchema(mediaSchema, {
     duree: {
@@ -30,18 +31,21 @@ const filmSchema = extendSchema(mediaSchema, {
         required: true
     }
 });
+*/
 
 /*
 //Serie model
-const serieSchema = mediaSchema.extend({
+const serieSchema = extendSchema(mediaSchema,{
     episodes: [episodeSchema]
+    
 });
 */
 
 const Media = mongoose.model('Media', mediaSchema);
-const Film = mongoose.model('Film', filmSchema );
-//const Serie = mongoose.model('Serie', serieSchema);
+// const Film = mongoose.model('Film', filmSchema );
+// const Serie = mongoose.model('Serie', serieSchema);
 
 
 module.exports = Media;
-module.exports = Film;
+// module.exports = Film;
+// module.exports = Serie;

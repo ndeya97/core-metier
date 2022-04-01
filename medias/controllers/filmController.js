@@ -1,5 +1,5 @@
-const Film = require('../models/Media');
-
+const Film = require('../models/Film');
+const mediaSchema = require('../models/Media')
 const film_index = (req, res) => {
     Film.find().then((films) => {
         res.json(films)
@@ -19,8 +19,10 @@ const film_create_post = (req,res) => {
         duree: req.body.duree
     }
     console.log(req.body)
+    console.log(mediaSchema);
     // Create a new Film
     var film = new Film(newFilm)
+
     film.save().then(() => {
         console.log("New film created!")
     }).catch(err => {
