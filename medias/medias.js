@@ -2,28 +2,32 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+var cors = require("cors");
+
+
 const mediaRoutes = require('./routes/mediaRoutes');
 const filmRoutes = require('./routes/filmRoutes');
-const serieRoutes = require('./routes/serieRoutes')
+const serieRoutes = require('./routes/serieRoutes');
 const episodeRoutes = require('./routes/episodeRoutes');
-const axios = require('axios');
+
+app.use(cors());
 
 app.use(bodyParser.json());
 
 
-// Load mongoose
-const mongoose = require('mongoose');
-
-
-//Connect
+// Connect
 mongoose.connect("mongodb://nadiop97:Ynover_97@cluster0-shard-00-00.wq4ds.mongodb.net:27017,cluster0-shard-00-01.wq4ds.mongodb.net:27017,cluster0-shard-00-02.wq4ds.mongodb.net:27017/mediasservices?ssl=true&replicaSet=atlas-oh9j0s-shard-0&authSource=admin&retryWrites=true&w=majority", () => {
     console.log("Database is connected - mediasservice !");
 });
 
+
+
 app.get('/', (req, res) => {
     res.send("This is our main endpoind for media !")
-// res.redirect('/books');
+    // res.redirect('/medias');
 })  
+
 
 
 //Media routes

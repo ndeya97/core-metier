@@ -3,8 +3,16 @@ const Schema = mongoose.Schema;
 
 const episodeSchema = new Schema({
     serieID: {
-        type: mongoose.SchemaTypes.ObjectId,
-        required: true
+        type: mongoose.Schema.Types.ObjectId, ref: 'Serie',
+        required: false
+    },
+    saison: {
+        type: Number,
+        require: false
+    },
+    url: {
+        type: String,
+        require: false
     },
     duree: {
         type: Number,

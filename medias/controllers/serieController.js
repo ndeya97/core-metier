@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Episode = require('../models/Episode');
 const Serie = require('../models/Serie');
 
 const serie_index = (req, res) => {
@@ -17,10 +18,10 @@ const serie_create_post = (req,res) => {
         url: req.body.url,
         categorie: req.body.categorie,
         description: req.body.description,
-        episodes: mongoose.Types.ObjectId(req.body.episodeID)
+        // episodes: mongoose.Types.ObjectId(req.body.episodeID)
     }
 
-    var serie = new Serie(newSerie)
+    var serie =  new Serie(newSerie)
     serie.save().then(() => {
         console.log("New serie created!")
     }).catch(err => {
@@ -29,7 +30,7 @@ const serie_create_post = (req,res) => {
        } 
     })
     console.log(serie);
-    res.send("A new serie created with success");
+    res.send("A new serie created with success ");
 }
 
 
@@ -80,5 +81,5 @@ module.exports = {
     serie_index,
     serie_create_post,
     serie_update,
-    serie_details_get
+    serie_details_get,
 }

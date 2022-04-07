@@ -33,7 +33,24 @@ const film_create_post = (req,res) => {
     res.send("A new film created with success");
 }
 
+
+const film_details_get = (req, res) => {
+    Film.findById(req.params.id).then((film) => {
+        if(film){
+            res.json(film)
+        }else{
+            res.sendStatus(400);
+        }
+
+    }).catch(err => {
+        if(err){
+            throw err;
+        }
+    })
+}
+
 module.exports = {
     film_index,
-    film_create_post
+    film_create_post,
+    film_details_get
 }
