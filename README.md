@@ -1,6 +1,6 @@
 # core-metier
 
-# gestion-poster
+# gestion-media
 
 Aller sur le répertoire medias
 
