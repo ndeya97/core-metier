@@ -40,7 +40,16 @@ const episode_create_post = (req,res) => {
      Serie.findById(episode.serieID).then((serie) => {
         if(serie){
             serie.episodes.push(episode)
-            res.send("new episode created and add to serie");
+            // res.send("new episode created and add to serie");
+            serie.save().then(() => {
+                console.log(serie)
+                res.send("new episode created and add to serie");
+        
+            }).catch(err => {
+               if(err){
+                   throw err;
+               } 
+            })
             console.log(serie)
         }else{
             res.sendStatus(400);
@@ -51,6 +60,17 @@ const episode_create_post = (req,res) => {
         }
     })
 }
+
+
+
+
+
+
+
+
+
+
+
 
 // const episode_details = (req,res) => {
 //     Episode.findById(req.params.id).then((episode) => {
