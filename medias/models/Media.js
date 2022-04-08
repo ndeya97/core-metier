@@ -20,6 +20,7 @@ const mediaSchema = new Schema({
         type: String,
         required: true
     },
+    posters:  [{type: Schema.Types.ObjectId, ref:'Poster'}]
 });
 
 
